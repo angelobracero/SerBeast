@@ -5,3 +5,20 @@
 body {
   @apply bg-richblue;
 }
+
+/**!------------------------ SCROLLBAR ------------------------*/
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f2f1f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 167, 245);
+  width: 5px;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
