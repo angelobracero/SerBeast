@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 bg-lightblue text-gray-200 h-16 border-b-4 md:border-b-2 border-lightgreen">
+      <header className="sticky top-0 bg-lightblue text-gray-200 h-16 border-b-4 md:border-b-2 border-lightgreen z-50">
         <div className="flex items-center h-full w-[90%] md:w-[80%] mx-auto">
           <div className="flex items-center flex-grow">
             <a href="#">

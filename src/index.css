@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .grid-cols-custom {
+    grid-template-columns: 1fr 50px 1fr 50px 1fr;
+  }
+
+  .grid-cols-footer {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+}
+
 body {
   @apply bg-richblue;
 }
