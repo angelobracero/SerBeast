@@ -1,4 +1,4 @@
-import { services } from "./servicesData";
+import { displayServices } from "./displayServices";
 import Service from "./Service";
 import Button from "./Button";
 
@@ -7,7 +7,7 @@ const Services = () => {
     <section className="w-[90%] md:w-[80%] mx-auto text-center py-10">
       <h1 className="text-3xl font-montserrat font-bold pb-6">Our Services</h1>
       <div className="grid gap-4 md:grid-cols-2 pb-4">
-        {services.map((service) => (
+        {displayServices.map((service) => (
           <Service
             key={service.title}
             title={service.title}

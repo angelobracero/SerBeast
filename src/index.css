@@ -16,6 +16,14 @@ body {
   @apply bg-richblue;
 }
 
+.option {
+  @apply bg-lightblue;
+}
+
+.option:hover {
+  background-color: red;
+}
+
 /**!------------------------ SCROLLBAR ------------------------*/
 ::-webkit-scrollbar {
   width: 6px;

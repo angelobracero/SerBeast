@@ -3,7 +3,7 @@ import plumbingIcon from "../assets/images/icons/plumbing-icon.png";
 import electricalIcon from "../assets/images/icons/electrical-icon.webp";
 import teachingIcon from "../assets/images/icons/teaching-icon.webp";
 
-export const services = [
+export const displayServices = [
   {
     title: "Plumbing",
     img: plumbingIcon,
