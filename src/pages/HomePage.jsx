@@ -1,19 +1,28 @@
-import React from "react";
-import Hero from "../components/Hero";
-import Services from "../components/Services";
-import HowItWorks from "../components/HowItWorks";
-import About from "../components/About";
-import FeaturedProfessional from "../components/FeaturedProfessional";
+import {
+  Hero,
+  Services,
+  HowItWorks,
+  About,
+  FeaturedProfessionals,
+} from "../components/customer/index";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const HomePage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
-    <main className="text-gray-200 grid">
+    <>
       <Hero />
       <Services />
       <HowItWorks />
       <About />
-      <FeaturedProfessional />
-    </main>
+      <FeaturedProfessionals />
+    </>
   );
 };
 
