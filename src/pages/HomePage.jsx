@@ -21,7 +21,7 @@ const HomePage = () => {
       <Services />
       <HowItWorks />
       <About />
-      <FeaturedProfessionals />
+      {/* <FeaturedProfessionals /> */}
     </>
   );
 };

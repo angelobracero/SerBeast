@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import profileImage from "../../assets/images/profile-images/profile-image.webp";
 import { GoCheckCircleFill, GoXCircleFill } from "react-icons/go";
 import {
