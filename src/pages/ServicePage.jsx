@@ -28,6 +28,7 @@ const ServicePage = () => {
     return <Loading />;
   }
 
+  //rer
   if (isError) {
     return <Error error={error} />;
   }
