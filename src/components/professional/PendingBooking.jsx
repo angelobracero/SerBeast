@@ -37,6 +37,16 @@ const PendingBooking = ({ booking, user }) => {
     },
   });
 
+  // Automatically cancel past bookings
+  useEffect(() => {
+    const bookingDateTime = new Date(`${booking.date}T${booking.time}`);
+    const currentDateTime = new Date();
+
+    if (currentDateTime > bookingDateTime && booking.status === "Pending") {
+      updateCancelMutate(booking.bookingId);
+    }
+  }, [booking, updateCancelMutate]);
+
   function handleUpdateToConfirmButton() {
     const confirmUpdate = window.confirm(
       "Are you sure you want to accept this booking?"

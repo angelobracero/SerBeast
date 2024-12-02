@@ -11,8 +11,6 @@ const ConfirmedBookings = () => {
     queryFn: () => fetchBookingsPro(user.id),
   });
 
-  console.log(data);
-
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -22,9 +20,9 @@ const ConfirmedBookings = () => {
   }
 
   // Filter the data to only include bookings with status "Confirmed"
-  const confirmedBookings = data.filter(
-    (booking) => booking.status === "Confirmed"
-  );
+  const confirmedBookings = Array.isArray(data)
+    ? data.filter((booking) => booking.status === "Confirmed")
+    : [];
 
   return (
     <>
@@ -40,18 +38,23 @@ const ConfirmedBookings = () => {
               <th className="p-3 hidden md:table-cell">Date</th>
               <th className="p-3 hidden md:table-cell">Time</th>
               <th className="p-3 hidden md:table-cell">Status</th>
+              <th className="p-3 hidden md:table-cell">Action</th>
             </tr>
           </thead>
           <tbody>
             {confirmedBookings.length === 0 ? (
               <tr>
-                <td colSpan="5" className="p-3 text-center h-[400px]">
+                <td colSpan="6" className="p-3 text-center h-[400px]">
                   No confirmed bookings available.
                 </td>
               </tr>
             ) : (
               confirmedBookings.map((booking) => (
-                <Booking key={booking.bookingId} booking={booking} />
+                <Booking
+                  key={booking.bookingId}
+                  booking={booking}
+                  user={user}
+                />
               ))
             )}
           </tbody>

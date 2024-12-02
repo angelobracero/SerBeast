@@ -137,7 +137,6 @@ const AddService = ({ isAddServiceOpen, setIsAddServiceOpen, user }) => {
       }));
     }
   };
-  console.log(inputValues);
   function handleLoginOnSubmit(e) {
     e.preventDefault();
     const formData = new FormData();

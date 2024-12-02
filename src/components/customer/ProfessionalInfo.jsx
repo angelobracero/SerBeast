@@ -31,8 +31,6 @@ const ProfessionalInfo = () => {
     queryFn: ({ signal }) => fetchProfessional({ id: params.id, signal }),
   });
 
-  console.log(data);
-
   if (isLoading) {
     return (
       <section className="w-[90%] md:w-[80%] mx-auto py-20 mb-10 text-white grid place-content-center font-roboto min-h-[500px] flex justify-center items-center">
@@ -52,6 +50,8 @@ const ProfessionalInfo = () => {
       </section>
     );
   }
+
+  console.log(data);
 
   return (
     <>
@@ -75,21 +75,27 @@ const ProfessionalInfo = () => {
               {data.firstName} {data.lastName}
             </h1>
             <div className="flex justify-center md:justify-start gap-4">
-              <div className="flex gap-2">
+              {/* <div className="flex gap-2">
                 <IoMdStar className="h-6 w-6" />
                 <p>
                   {data.rating} rating{" "}
                   <span className="text-gray-400 italic text-sm">(25)</span>
                 </p>
-              </div>
+              </div> */}
               <div className="flex gap-2">
                 <FaLocationDot className="h-5 w-5" />
                 <p>Location: {data.barangay}</p>
               </div>
             </div>
+            <div className="flex gap-2">
+              <p>Phone Number: {data.phoneNumber}</p>
+            </div>
+            <div className="flex gap-2">
+              <p>Email: {data.email}</p>
+            </div>
             <p>{data.description}</p>
             <Button
-              className="bg-lightblue rounded-full"
+              className="bg-lightblue rounded-full py-1"
               onClick={handleOpenBooking}
             >
               Book Now

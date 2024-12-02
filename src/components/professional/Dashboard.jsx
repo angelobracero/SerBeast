@@ -4,11 +4,27 @@ import calendarIcon from "../../assets/images/icons/calendar-icon.png";
 import gearsIcon from "../../assets/images/icons/gears-icon.png";
 import DashboardMetricCard from "./DashboardMetricCard";
 import { useUser } from "../../store/UserContext";
+import { Loading } from "../common";
+
+import { fetchProfessionalDashboard } from "../../util/http";
+import { useQuery } from "@tanstack/react-query";
 
 import DashboardBookingList from "./DashboardBookingList";
 
 const Dashboard = ({ isMenuPcOpen }) => {
   const { user } = useUser();
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["professionalBookings", user.id],
+    queryFn: () => fetchProfessionalDashboard(user.id),
+  });
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  // Check if data exists before accessing its properties
+  const upcomingBookings = data?.upcomingBookings || [];
 
   return (
     <>
@@ -19,31 +35,31 @@ const Dashboard = ({ isMenuPcOpen }) => {
         <DashboardMetricCard
           icon={serviceIcon}
           title="TOTAL SERVICE OFFERED"
-          value="1"
+          value={data?.serviceOffered || 0}
         />
         <DashboardMetricCard
           icon={calendarIcon}
           title="NO. OF ACTIVE BOOKINGS"
-          value="5"
+          value={data?.confirmedBookings || 0}
           gradient="bg-gradient-to-r from-[#0092F8] via-[#0092F8] to-[#00D5EF]"
         />
         <DashboardMetricCard
           icon={MoneyIcon}
           title="TOTAL EARNINGS"
-          value="₱20,485"
+          value={`₱${data?.totalEarnings || 0}`}
           gradient="bg-gradient-to-r from-[#E97F00] to-[#D6AC46]"
         />
         <DashboardMetricCard
           icon={gearsIcon}
           title="COMPLETED SERVICES"
-          value="22"
+          value={data?.completedServices || 0}
           gradient="bg-gradient-to-r from-[#0092F8] via-[#0092F8] to-[#00D5EF]"
         />
       </div>
       <div className="flex flex-col sm:flex-row mt-4 gap-4">
         <div className="flex-grow-[2] basis-10 bg-[#1b204a] rounded-lg min-h-60"></div>
 
-        <div className="flex-1 basis-10 md:max-w-[416px] bg-lightblue rounded-lg min-h-80 max-h-[458px]">
+        <div className="flex-1 basis-10 md:max-w-[416px] bg-lightblue rounded-lg min-h-80 max-h-[458px] overflow-y-auto">
           <div className="w-[90%] mx-auto">
             <h4 className="text-center font-bold pt-2 pb-5">
               UPCOMING BOOKINGS
@@ -56,10 +72,20 @@ const Dashboard = ({ isMenuPcOpen }) => {
                 </tr>
               </thead>
               <tbody>
-                <DashboardBookingList />
-                <DashboardBookingList />
-                <DashboardBookingList />
-                <DashboardBookingList />
+                {upcomingBookings.length > 0 ? (
+                  upcomingBookings.map((upcomingBooking) => (
+                    <DashboardBookingList
+                      key={upcomingBooking.bookingId}
+                      upcomingBooking={upcomingBooking}
+                    />
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="2" className="text-center py-4">
+                      No upcoming bookings at the moment.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

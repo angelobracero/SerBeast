@@ -1,4 +1,5 @@
 const BASE_URL = "https://serbeast.azurewebsites.net/api";
+// const BASE_URL = "https://localhost:7134/api";
 
 ///
 /// PROFESSIONALS
@@ -22,6 +23,26 @@ export async function fetchProfessional({ id, signal }) {
   const response = await fetch(`${BASE_URL}/Professional/${id}`, {
     signal,
   });
+
+  if (!response.ok) {
+    const error = new Error("An error occured while fetching the professional");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+
+  const { result } = await response.json();
+
+  return result;
+}
+
+export async function fetchProfessionalInfo({ id, signal }) {
+  const response = await fetch(
+    `${BASE_URL}/Professional/professionalInfo/${id}`,
+    {
+      signal,
+    }
+  );
 
   if (!response.ok) {
     const error = new Error("An error occured while fetching the professional");
@@ -282,6 +303,37 @@ export async function fetchBookingsPro(proId) {
   }
 }
 
+export async function fetchProfessionalDashboard(proId) {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/Booking/Professional/${proId}/dashboard`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    if (response.status === 204) {
+      return []; // Return an empty array if status is 204 (No Content)
+    }
+
+    const data = await response.json(); // Initialize data after checking the response status
+
+    // Check if upcomingBookings is empty or undefined, and set it to an empty array if so
+    if (
+      !data.result.upcomingBookings ||
+      data.result.upcomingBookings.length === 0
+    ) {
+      data.result.upcomingBookings = [];
+    }
+
+    return data.result; // Return the result object
+  } catch (error) {
+    console.error("Request failed:", error);
+    throw error;
+  }
+}
+
 export async function addBooking(bookingData) {
   const response = await fetch(`${BASE_URL}/Booking`, {
     method: "POST",
@@ -307,6 +359,27 @@ export async function addBooking(bookingData) {
 export async function updateStatusToConfirm(bookingId) {
   const response = await fetch(
     `${BASE_URL}/Booking/${bookingId}/status/confirm`,
+    {
+      method: "PUT",
+    }
+  );
+
+  if (!response.ok) {
+    const errorInfo = await response.json();
+    const error = new Error("An error occurred while change booking status");
+    error.code = response.status;
+    error.info = errorInfo;
+    console.error("Error info:", errorInfo);
+    throw error;
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+export async function updateStatusToComplete(bookingId) {
+  const response = await fetch(
+    `${BASE_URL}/Booking/${bookingId}/status/complete`,
     {
       method: "PUT",
     }

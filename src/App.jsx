@@ -11,7 +11,10 @@ import ProfessionalLayout from "./pages/ProfessionalLayout";
 import Dashboard from "./components/professional/Dashboard";
 import PendingBookings from "./components/professional/PendingBookings";
 import ConfirmedBookings from "./components/professional/ConfirmedBookings";
+import CompletedBookings from "./components/professional/CompletedBookings";
 import MyServices from "./components/professional/MyServices";
+import AccountSettings from "./components/professional/AccountSettings";
+import AccountSettingsEdit from "./components/professional/AccountSettingsEdit";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
@@ -80,6 +83,30 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute role="professional">
             <ConfirmedBookings />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "completed-bookings",
+        element: (
+          <ProtectedRoute role="professional">
+            <CompletedBookings />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "account",
+        element: (
+          <ProtectedRoute role="professional">
+            <AccountSettings />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "account-edit",
+        element: (
+          <ProtectedRoute role="professional">
+            <AccountSettingsEdit />
           </ProtectedRoute>
         ),
       },

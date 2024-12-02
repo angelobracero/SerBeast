@@ -1,4 +1,4 @@
-import { IoMdHome } from "react-icons/io";
+import { IoMdHome, IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { FaRegCalendar, FaTools } from "react-icons/fa";
 import { MdOutlinePending } from "react-icons/md";
 import profileImage from "../../assets/images/profile-images/profile-image.webp";
@@ -62,6 +62,18 @@ const Sidebar = ({ isMenuMobileOpen, isMenuPcOpen }) => {
         />
         <p className={`${isMenuPcOpen ? "block" : "hidden"} pl-7`}>
           Confirmed Bookings
+        </p>
+      </Link>
+
+      <Link
+        to="/p/completed-bookings"
+        className="grid grid-cols-[30px_1fr] items-center hover:bg-[#0A3B50] hover:text-white cursor-pointer py-3 relative"
+      >
+        <IoMdCheckmarkCircleOutline
+          className={`h-5 w-5 ${isMenuPcOpen ? "ml-4" : "ml-[14px]"}`}
+        />
+        <p className={`${isMenuPcOpen ? "block" : "hidden"} pl-7`}>
+          Completed Bookings
         </p>
       </Link>
     </aside>

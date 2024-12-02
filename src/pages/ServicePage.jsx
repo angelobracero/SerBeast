@@ -36,8 +36,6 @@ const ServicePage = () => {
     return <p>No data available</p>;
   }
 
-  console.log(data);
-
   return (
     <>
       <ServiceHero title={data.title} description={data.description} />

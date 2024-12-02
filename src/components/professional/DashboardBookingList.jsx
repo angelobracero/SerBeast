@@ -1,6 +1,6 @@
 import profileImage from "../../assets/images/profile-images/profile-image.webp";
 
-const DashboardBookingList = () => {
+const DashboardBookingList = ({ upcomingBooking }) => {
   return (
     <tr>
       <td>
@@ -10,17 +10,17 @@ const DashboardBookingList = () => {
           </div>
           <div className="text-gray-300 text-sm italic flex-1 grid sm:place-content-center">
             <h5 className="text-white font-semibold text-base not-italic">
-              Angelo L. Bracero
+              {upcomingBooking.professional}
             </h5>
-            <p>Plumbing</p>
-            <p className="lg:hidden">18 Nov 2024</p>
-            <p className="lg:hidden">8:00 am </p>
+            <p>{upcomingBooking.service}</p>
+            <p className="lg:hidden">{upcomingBooking.date}</p>
+            <p className="lg:hidden">{upcomingBooking.time}</p>
           </div>
         </div>
       </td>
       <td className="hidden lg:table-cell">
-        <p className="font-semibold">18 Nov 2024</p>
-        <p className="text-gray-300 text-sm italic">8:00 am </p>
+        <p className="font-semibold">{upcomingBooking.date}</p>
+        <p className="text-gray-300 text-sm italic">{upcomingBooking.time}</p>
       </td>
     </tr>
   );
