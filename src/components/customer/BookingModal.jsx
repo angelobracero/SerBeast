@@ -24,8 +24,11 @@ const BookingModal = ({
 
       setIsOpen(false);
     },
-    onError: (error) => {
-      console.log(error);
+    onError: () => {
+      toast.error(
+        "Bookings cannot be made for today. Please select a later date."
+      );
+      setIsOpen(false);
     },
   });
 
