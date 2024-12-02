@@ -15,7 +15,9 @@ const Sidebar = ({ isMenuMobileOpen, isMenuPcOpen }) => {
       <div
         className={`flex flex-col items-center font-montserrat mb-5 ${isMenuPcOpen ? "block" : "hidden"} `}
       >
-        <img src={profileImage} alt="" className="w-20 cursor-pointer" />
+        <Link to="/p/account">
+          <img src={profileImage} alt="" className="w-20 cursor-pointer" />
+        </Link>
         <h4 className="text-md font-semibold">
           {user.firstname + " " + user.lastname}
         </h4>
