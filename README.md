@@ -30,30 +30,6 @@ The back-end for **SerBeast** is in a separate repository, and the front-end com
 
 ## 📂 File Structure
 
-# 🦸‍♂️ SerBeast
-
-**SerBeast** is a dynamic service marketplace platform that connects users with professionals offering various services, from home repairs to personal tasks. The front-end of **SerBeast** is designed for a smooth, intuitive user experience, featuring easy navigation and service discovery.
-
----
-
-## 🌟 Features
-
-- **🔍 Service Search**: Find professionals for various services like plumbing, cleaning, electrical work, and more.
-- **📋 Service Listings**: View detailed listings of services with descriptions, pricing, and ratings.
-
----
-
-## 🚀 Technologies Used
-
-- **HTML**
-- **CSS**
-- **Tailwind CSS**
-- **React.js**
-
----
-
-## 📂 File Structure
-
 ```plaintext
 ├── /src
 │   ├── /assets            # Static assets (images, icons, etc.)
