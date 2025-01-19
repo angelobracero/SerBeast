@@ -75,5 +75,5 @@ The back-end for **SerBeast** is in a separate repository, and the front-end com
 5. Visit the app in your browser:
    ```plaintext
    http://localhost:3000
-
+   ```
 
