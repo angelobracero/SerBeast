@@ -58,6 +58,7 @@ The back-end for **SerBeast** is in a separate repository, and the front-end com
    ```
 2. Install dependencies:
    - Run the following command to install required dependencies:
+     
      ```bash
      npm install
      ```
@@ -67,6 +68,7 @@ The back-end for **SerBeast** is in a separate repository, and the front-end com
 
 4. Run the application:
    - Start the development server:
+     
      ```bash
      npm run dev
      ```
